@@ -1,5 +1,7 @@
 <% if @movie.respond_to? :business %>
-  <%= @movie.business.keys %>
+  <% @movie.business.attributes.each do |k, v| %>
+    <b> <%=k%> </b> <%= v.inspect[0, 80] %> <br/>
+  <% end %>
 <% else %>
   "There is no business information for this movie"
 <% end %>
