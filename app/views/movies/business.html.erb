@@ -1,0 +1,6 @@
+<% if @movie.respond_to? :business %>
+  <%= @movie.business.keys %>
+<% else %>
+  "There is no business information for this movie"
+<% end %>
+

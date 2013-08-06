@@ -1,0 +1,28 @@
+<h2><%= @movies.size %>  movies are found</h2>
+
+<div class="accordion" id="accordion2">
+<% @movies.each do |movie| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-target="#<%=movie.imdb_id%>" data-parent="#accordion2">
+        <b>Title:</b> <%= movie.title %>, 
+        <b>Directors:</b> <%=movie.directors.join(',')%>,
+        <b>Released in:</b> <%=movie.release_date.to_s[0,4]%>
+      </button>
+    </div>
+    <div id="<%=movie.imdb_id%>" class="accordion-body collapse" style="height:0px">
+      <b>Title:</b> <%= movie.title %><br/>
+      <b>Runtime:</b> <%= movie.runtime.join(' ') %><br/>
+      <b>Release Date:</b> <%=movie.release_date.to_s[4,2]%>/<%=movie.release_date.to_s[6,2]%>/<%=movie.release_date.to_s[0,4]%><br/>
+      <b>Poster:</b> <%=image_tag movie.poster_url%><br/>
+      <b>Directors:</b> <%=movie.directors.join(',')%><br/>
+      <b>Actors:</b> <%=movie.actors.join(',')%><br/>
+      <b>Business Details:</b>  <a href="javascript:void(0)" onclick="$('#<%=movie.imdb_id%>_business').load('/movies/<%=movie.imdb_id%>/business')"> Click Here </a> <br/>
+      <div id="<%=movie.imdb_id%>_business"></div>
+      <b>Technical Details:</b> <a href="javascript:void(0)" onclick="$('#<%=movie.imdb_id%>_technical').load('/movies/<%=movie.imdb_id%>/technical')"> Click Here </a> <br/>
+      <div id="<%=movie.imdb_id%>_technical"></div>
+    </div>
+  </div>
+<% end %>
+</div> 
+

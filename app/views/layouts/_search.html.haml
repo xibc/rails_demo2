@@ -1,0 +1,13 @@
+.row
+  =form_for(:movie, url: search_movies_path) do |f|
+    %span.span1
+      =f.label :title
+    %span.span4
+      =f.text_field :title
+    %span.span1
+      =f.label :type
+    %span.span4
+      =f.text_field :type
+    %span.span1
+      =f.submit "Search"
+

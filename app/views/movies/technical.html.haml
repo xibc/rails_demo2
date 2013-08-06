@@ -1,0 +1,8 @@
+-if @movie.respond_to? :technical
+  -@movie.technical.attributes.each do |k, v|
+    %b 
+      =k
+    =v.join(', ')
+    %br
+-else
+  There is no technical information for this movie
